@@ -45,14 +45,14 @@ public class NewActivity extends AppCompatActivity {
                 TextView score=view.findViewById(R.id.score);
                 if(cursor[i]==0 ){
                     cursor[i]=1;
-                    expand(view,500,0);
+                    expand(view,250,0);
                     score.setVisibility(View.VISIBLE);
                     score.setText("0-0");
 
                 }
                 else{
                     cursor[i]=0;
-                    collapse(view,500,0);
+                    collapse(view,250,0);
                 }
             }
         });
