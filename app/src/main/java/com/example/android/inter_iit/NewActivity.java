@@ -35,15 +35,25 @@ public class NewActivity extends AppCompatActivity {
         list.add(new CardClass(R.drawable.madras,"IIT Madras",R.drawable.indore,"IIT Indore" ));
         list.add(new CardClass(R.drawable.madras,"IIT Madras",R.drawable.indore,"IIT Indore" ));
 
+        final int [] cursor=new int[20];
         ListAdapter adapter=new ListAdapter(this,0,list);
         ListView lv=findViewById(R.id.Lst1);
         lv.setAdapter(adapter);
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                TextView score=findViewById(R.id.score);
-                expand(view,500,0);
-                score.setText("00");
+                TextView score=view.findViewById(R.id.score);
+                if(cursor[i]==0 ){
+                    cursor[i]=1;
+                    expand(view,500,0);
+                    score.setVisibility(View.VISIBLE);
+                    score.setText("0-0");
+
+                }
+                else{
+                    cursor[i]=0;
+                    collapse(view,500,0);
+                }
             }
         });
 
@@ -80,7 +90,7 @@ public class NewActivity extends AppCompatActivity {
 
     public static void collapse(final View v, int duration, int targetHeight) {
         int prevHeight  = v.getHeight();
-        ValueAnimator valueAnimator = ValueAnimator.ofInt(prevHeight, targetHeight);
+        ValueAnimator valueAnimator = ValueAnimator.ofInt(prevHeight, prevHeight/2);
         valueAnimator.setInterpolator(new DecelerateInterpolator());
         valueAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
             @Override

@@ -14,14 +14,23 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        CardView cd = findViewById(R.id.crdvw);
-        cd.setOnClickListener(new View.OnClickListener() {
+        CardView Volleyball = findViewById(R.id.Volleyball);
+        Volleyball.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 {
                     Intent intent =new Intent(MainActivity.this,NewActivity.class);
                     startActivity(intent);
                 }
+            }
+        });
+
+        final CardView Badminton = findViewById(R.id.Badminton);
+        Badminton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this,Badminton.class);
+                startActivity(intent);
             }
         });
     }
